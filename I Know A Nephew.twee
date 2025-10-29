@@ -1,0 +1,71 @@
+:: StoryTitle
+I Know A Nephew
+
+
+:: StoryData
+{
+  "ifid": "46403AD2-8F3C-4631-91C2-CE5E2BF4F999",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Title",
+  "zoom": 1
+}
+
+
+:: Confront Them {"position":"1000,725","size":"100,100"}
+(align:"=><=")+(box:"X=")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
+
+
+:: Explore the studio {"position":"1000,600","size":"100,100"}
+(align:"=><=")+(box:"X=")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
+
+(align:"=><=")[[Confront Them]]
+(align:"=><="))[[Stay Silent and Keep Working]]
+
+
+:: Start {"position":"1100,450","size":"100,100"}
+(align:"=><=")+(box:"X")[<h4>You arrive at the studio, walking past rows of exhausted artists. Everyone avoids eye contact. Your uncle greets you warmly, hands you a workstation that used to belong to someone else.</h4>]
+
+(align:"=><=")[[Explore the studio]] 
+(align:"=><=")[[Start Working]] 
+
+
+
+:: Start Working {"position":"1225,600","size":"100,100"}
+
+
+
+:: Stay Silent and Keep Working {"position":"1125,725","size":"100,100"}
+
+
+
+:: Title {"position":"900,450","size":"100,100"}
+(align:"=><=")+(box:"X")+(text-colour:red)+(text-style:"buoy")[<h1>I Know A Nephew</h1>]
+
+(align:"=><=")[[Start]] 
+
+
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+
+tw-story {
+  font-family: 'Exo', sans-serif;
+  font-weight: bold;
+  text-shadow: 0 0 5px #cb4b16;
+  
+}
+
+.enchantment-link, tw-link, a {
+	color: white; 
+	font-weight: bold;
+  	font-size: 1.5em;
+	text-shadow: 0 0 5px #cb4b16;
+}
+
+.enchantment-link:hover, tw-link:hover, a:hover {
+	color: red; 
+	font-weight: bold; 
+  	font-size: 1.5em;
+	text-shadow: 0 0 5px #2aa198;
+}
