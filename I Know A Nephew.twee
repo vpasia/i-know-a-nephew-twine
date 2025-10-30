@@ -12,38 +12,68 @@ I Know A Nephew
 }
 
 
-:: Confront Them {"position":"1000,725","size":"100,100"}
-(align:"=><=")+(box:"X=")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
+:: Confront Them {"position":"975,775","size":"100,100"}
+(box:"X")+(text-size:1)[<h4>When you confront the whispering artists, they don’t respond. Their faces turn toward you in unison, expressionless, drained of life. One opens their mouth, but no words come out only the faint sound of keyboard clicking. On the nearest monitor, text starts typing itself….</h4>]
+{
+  (set: $typewriterText to "You don’t belong here. Yet you are already part of it.")
+  (set: $typewriterPos to 1)
+
+  |typewriterOutput>[]
+
+  (live: 50ms)[
+
+    (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")[(print: $typewriterText's $typewriterPos)]
+
+    (set: $typewriterPos to it + 1)
+
+    (if: $typewriterPos is $typewriterText's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+
+
+(align:"=><=")+(box:"X")[[Flee back to your desk and panic->Stay Silent and Keep Working]]
+
+
+:: Defend Yourself {"position":"1450,600","size":"100,100"}
+
 
 
 :: Explore the studio {"position":"1000,600","size":"100,100"}
-(align:"=><=")+(box:"X=")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
+(align:"=><=")+(box:"X")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
 
 (align:"=><=")[[Confront Them]]
-(align:"=><="))[[Stay Silent and Keep Working]]
+(align:"=><=")[[Stay Silent and Keep Working]]
 
 
-:: Start {"position":"1100,450","size":"100,100"}
+:: Start Working {"position":"1200,600","size":"100,100"}
+(align:"=><=")+(box:"X")[<h4>On your first render, the software spits out grotesque images, textures like skin, faces where there should be none. A senior artist snaps:</h4>]
+
+(align:"=><=")+(box:"X")+(text-style:"shudder")+(text-color:"#780606")+(text-style:"outline", "expand")[<h3>//''“Stop touching files you don’t understand!”''//</h3>]
+
+(align:"=><=")[[Defend Yourself]]
+(align:"=><=")[[Stay Silent and Keep Working]]
+
+
+:: Stay Silent and Keep Working {"position":"1225,775","size":"100,100"}
+(align:"=><=")+(box:"X")[Your monitor shows your reflection moving independently of you. When you blink, it doesn't. It whispers:]
+(align:"=><=")+(box:"X")+(text-style:"bold","italic","outline","expand","fade-in-out")+(text-size:2)+(text-color:red)["You were brought here for a reason"]
+
+
+
+
+:: The Beginning {"position":"1100,450","size":"100,100"}
 (align:"=><=")+(box:"X")[<h4>You arrive at the studio, walking past rows of exhausted artists. Everyone avoids eye contact. Your uncle greets you warmly, hands you a workstation that used to belong to someone else.</h4>]
 
 (align:"=><=")[[Explore the studio]] 
-(align:"=><=")[[Start Working]] 
-
-
-
-:: Start Working {"position":"1225,600","size":"100,100"}
-
-
-
-:: Stay Silent and Keep Working {"position":"1125,725","size":"100,100"}
-
+(align:"=><=")[[Start Working]]
 
 
 :: Title {"position":"900,450","size":"100,100"}
-(align:"=><=")+(box:"X")+(text-colour:red)+(text-style:"buoy")[<h1>I Know A Nephew</h1>]
+(align:"=><=")+(box:"X")+(text-colour:red)+(text-style:"buoy")+(text-style:"blurrier")+(text-size:1.2)[<h1>I Know A Nephew</h1>]
 
-(align:"=><=")[[Start]] 
-
+(align:"=><=")[[Start->The Beginning]]
 
 
 :: StoryStylesheet [stylesheet]
@@ -51,9 +81,7 @@ I Know A Nephew
 
 tw-story {
   font-family: 'Exo', sans-serif;
-  font-weight: bold;
-  text-shadow: 0 0 5px #cb4b16;
-  
+  font-weight: bold;  
 }
 
 .enchantment-link, tw-link, a {
