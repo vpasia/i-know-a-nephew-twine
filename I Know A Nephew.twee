@@ -12,6 +12,10 @@ I Know A Nephew
 }
 
 
+:: Bloodline Ending {"position":"1450,725","size":"100,100"}
+
+
+
 :: Confront Them {"position":"975,775","size":"100,100"}
 (box:"X")+(text-size:1)[<h4>When you confront the whispering artists, they don’t respond. Their faces turn toward you in unison, expressionless, drained of life. One opens their mouth, but no words come out only the faint sound of keyboard clicking. On the nearest monitor, text starts typing itself….</h4>]
 {
@@ -37,6 +41,17 @@ I Know A Nephew
 
 
 :: Defend Yourself {"position":"1450,600","size":"100,100"}
+(align:"=><=")+(box:"X")[<h4>HR calls you in. A missing employee’s desk was reassigned to you. The higher-ups defend you.</h4>]
+
+(align:"=><=")+(text-size:2)+(text-style:"smear", "rumble")+(text-color:red)[“Family comes first.”] 
+
+(align:"=><=")+(box:"X")[<h4>But you swear you hear scratching inside the walls behind you.</h4>]
+
+(align:"=><=")[[Accept their protection->Bloodline Ending]]
+(align:"=><=")[[Deny responsibility, panic->Erased Ending]]
+
+
+:: Erased Ending {"position":"1575,725","size":"100,100"}
 
 
 
@@ -59,8 +74,6 @@ I Know A Nephew
 :: Stay Silent and Keep Working {"position":"1225,775","size":"100,100"}
 (align:"=><=")+(box:"X")[Your monitor shows your reflection moving independently of you. When you blink, it doesn't. It whispers:]
 (align:"=><=")+(box:"X")+(text-style:"bold","italic","outline","expand","fade-in-out")+(text-size:2)+(text-color:red)["You were brought here for a reason"]
-
-
 
 
 :: The Beginning {"position":"1100,450","size":"100,100"}
