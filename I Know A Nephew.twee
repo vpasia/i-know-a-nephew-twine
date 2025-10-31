@@ -13,7 +13,7 @@ I Know A Nephew
 
 
 :: Bloodline Ending {"position":"1450,725","size":"100,100"}
-
+(align:"=><=")+(box:"X")[<h4>You discover your uncle has kept the studio alive for decades by feeding it blood ties. Your privilege is your curse—you are the next vessel. </h4>]
 
 
 :: Confront Them {"position":"975,775","size":"100,100"}
@@ -26,7 +26,7 @@ I Know A Nephew
 
   (live: 50ms)[
 
-    (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")[(print: $typewriterText's $typewriterPos)]
+    (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText's $typewriterPos)]
 
     (set: $typewriterPos to it + 1)
 
@@ -52,7 +52,7 @@ I Know A Nephew
 
 
 :: Erased Ending {"position":"1575,725","size":"100,100"}
-
+(align:"=><=")+(box:"X")[<h4>You try to fight back, cut ties, or flee. Slowly, everyone stops acknowledging you. Your desk is cleared. Your login deleted. Even your uncle doesn’t recognize you anymore.</h4>]
 
 
 :: Explore the studio {"position":"1000,600","size":"100,100"}
@@ -60,6 +60,14 @@ I Know A Nephew
 
 (align:"=><=")[[Confront Them]]
 (align:"=><=")[[Stay Silent and Keep Working]]
+
+
+:: Ignore It {"position":"1350,900","size":"100,100"}
+
+
+
+:: Look Closer {"position":"1225,900","size":"100,100"}
+
 
 
 :: Start Working {"position":"1200,600","size":"100,100"}
@@ -74,6 +82,9 @@ I Know A Nephew
 :: Stay Silent and Keep Working {"position":"1225,775","size":"100,100"}
 (align:"=><=")+(box:"X")[Your monitor shows your reflection moving independently of you. When you blink, it doesn't. It whispers:]
 (align:"=><=")+(box:"X")+(text-style:"bold","italic","outline","expand","fade-in-out")+(text-size:2)+(text-color:red)["You were brought here for a reason"]
+
+(align:"=><=")[[Look Closer]]
+(align:"=><=")[[Ignore It]]
 
 
 :: The Beginning {"position":"1100,450","size":"100,100"}
