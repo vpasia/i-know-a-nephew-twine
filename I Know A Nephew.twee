@@ -24,7 +24,7 @@ I Know A Nephew
 
   |typewriterOutput>[]
 
-  (live: 50ms)[
+  (live: 100ms)[
 
     (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText's $typewriterPos)]
 
@@ -59,11 +59,63 @@ I Know A Nephew
 (align:"=><=")+(box:"X")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
 
 (align:"=><=")[[Confront Them]]
-(align:"=><=")[[Stay Silent and Keep Working]]
+(align:"=><=")[[Sit in your desk and Start Working->Stay Silent and Keep Working]]
 
 
 :: Ignore It {"position":"1350,900","size":"100,100"}
+(align:"=><=")[<h4>You try to ignore it, forcing yourself to work. But your project folder starts filling with files you didn’t make:</h4>]
+{
+  (set: $typewriterText1 to "self1.mov")
+  (set: $typewriterPos1 to 1)
 
+  |typewriterOutput1>[]
+
+  (live: 300ms)[
+
+    (append: ?typewriterOutput1)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText1's $typewriterPos1)]
+
+    (set: $typewriterPos1 to it + 1)
+
+    (if: $typewriterPos1 is $typewriterText1's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+{
+  (set: $typewriterText2 to "self2.mov")
+  (set: $typewriterPos2 to 1)
+
+  |typewriterOutput2>[]
+
+  (live: 300ms)[
+
+    (append: ?typewriterOutput2)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText2's $typewriterPos2)]
+
+    (set: $typewriterPos2 to it + 1)
+
+    (if: $typewriterPos2 is $typewriterText2's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+{
+  (set: $typewriterText3 to "self3.mov")
+  (set: $typewriterPos3 to 1)
+
+  |typewriterOutput3>[]
+
+  (live: 300ms)[
+
+    (append: ?typewriterOutput3)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText3's $typewriterPos3)]
+
+    (set: $typewriterPos3 to it + 1)
+
+    (if: $typewriterPos3 is $typewriterText3's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+(align:"=><=")[<h4>Each one is a short render of you at your desk but slightly more decayed, more grotesque. The final one is timestamped //five minutes// in the future.</h4>]
 
 
 :: Look Closer {"position":"1225,900","size":"100,100"}
