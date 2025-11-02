@@ -12,11 +12,34 @@ I Know A Nephew
 }
 
 
-:: Bloodline Ending {"position":"1450,725","size":"100,100"}
+:: Bloodline Ending {"position":"1625,750","size":"100,100"}
 (align:"=><=")+(box:"X")[<h4>You discover your uncle has kept the studio alive for decades by feeding it blood ties. Your privilege is your curse—you are the next vessel. </h4>]
+(live:5s)[(go-to:"Bloodline Ending Final")]
 
 
-:: Confront Them {"position":"975,775","size":"100,100"}
+:: Bloodline Ending Final {"position":"1800,1075","size":"100,100"}
+{
+  (set: $typewriterText to "You are gone memory wiped like unfinished renders.")
+  (set: $typewriterPos to 1)
+
+  |typewriterOutput>[]
+
+  (live: 100ms)[
+
+    (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText's $typewriterPos)]
+
+    (set: $typewriterPos to it + 1)
+
+    (if: $typewriterPos is $typewriterText's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+
+(align:"=><=")[[Start Over->Title]]
+
+
+:: Confront Them {"position":"925,800","size":"100,100"}
 (box:"X")+(text-size:1)[<h4>When you confront the whispering artists, they don’t respond. Their faces turn toward you in unison, expressionless, drained of life. One opens their mouth, but no words come out only the faint sound of keyboard clicking. On the nearest monitor, text starts typing itself….</h4>]
 {
   (set: $typewriterText to "You don’t belong here. Yet you are already part of it.")
@@ -47,12 +70,35 @@ I Know A Nephew
 
 (align:"=><=")+(box:"X")[<h4>But you swear you hear scratching inside the walls behind you.</h4>]
 
-(align:"=><=")[[Accept their protection->Bloodline Ending]]
-(align:"=><=")[[Deny responsibility, panic->Erased Ending]]
+(align:"=><=")[[Accept Their Protection->Bloodline Ending]]
+(align:"=><=")[[Deny Responsibility, Panic->Erased Ending]]
 
 
-:: Erased Ending {"position":"1575,725","size":"100,100"}
+:: Erased Ending {"position":"1975,725","size":"100,100"}
 (align:"=><=")+(box:"X")[<h4>You try to fight back, cut ties, or flee. Slowly, everyone stops acknowledging you. Your desk is cleared. Your login deleted. Even your uncle doesn’t recognize you anymore.</h4>]
+(live:5s)[(go-to:"Erased Ending Final")]
+
+
+:: Erased Ending Final {"position":"2000,1025","size":"100,100"}
+{
+  (set: $typewriterText to "Your name forever burned into project credits while your face fades into static.")
+  (set: $typewriterPos to 1)
+
+  |typewriterOutput>[]
+
+  (live: 100ms)[
+
+    (append: ?typewriterOutput)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText's $typewriterPos)]
+
+    (set: $typewriterPos to it + 1)
+
+    (if: $typewriterPos is $typewriterText's length + 1)[
+      (stop:)
+    ]
+  ]
+}
+
+(align:"=><=")[[Start Over->Title]]
 
 
 :: Explore the studio {"position":"1000,600","size":"100,100"}
@@ -62,7 +108,7 @@ I Know A Nephew
 (align:"=><=")[[Sit in your desk and Start Working->Stay Silent and Keep Working]]
 
 
-:: Ignore It {"position":"1350,900","size":"100,100"}
+:: Ignore It {"position":"1350,925","size":"100,100"}
 (align:"=><=")[<h4>You try to ignore it, forcing yourself to work. But your project folder starts filling with files you didn’t make:</h4>]
 {
   (set: $typewriterText1 to "self1.mov")
@@ -103,6 +149,7 @@ I Know A Nephew
   (set: $typewriterPos3 to 1)
 
   |typewriterOutput3>[]
+  (click: ?typewriterOutput3)[(go-to:"Screen Stretches"))]
 
   (live: 300ms)[
 
@@ -117,9 +164,37 @@ I Know A Nephew
 }
 (align:"=><=")[<h4>Each one is a short render of you at your desk but slightly more decayed, more grotesque. The final one is timestamped //five minutes// in the future.</h4>]
 
+(align:"=><=")[[Stand]]
 
-:: Look Closer {"position":"1225,900","size":"100,100"}
 
+:: Look Closer {"position":"950,975","size":"100,100"}
+(align:"=><=")[<h4>The reflection begins to glitch, pixels tearing away, exposing bone and sinew. In your headphones, static arranges into words…. </h4>]
+
+(transition:"fade")+(transition-delay:1s)+(transition-time: 6s)+(text-style:"smear", "tall", "expand")+(text-size:1.5)+(text-color:red)+(align:"=><=")[“They hired you for your blood. Not your hands.”]<stretch|
+ (click: ?stretch)[(go-to:"Screen Stretches"))]
+
+(align:"=><=")[<h4>The monitor flickers, your uncle’s face replaces yours.</h4>]
+
+(align:"=><=")[[Stand]]
+
+
+:: Screen Stretches {"position":"975,1150","size":"100,100"}
+{
+(align:"=><=")[<h4>The screen stretches, pulling you inward. You feel your uncle’s hand on your shoulder, though no one’s behind you. He whispers: </h4>]
+(align:"=><=")+(box:"X")+(text-colour:red)+(text-style:"blur", "buoy")+(text-size:2)[“Now you understand. Family first.”]
+(align:"=><=")[<h4>You’re absorbed into the studio’s system, name cemented in the project credits forever.</h4>]
+
+(live:10s)[(go-to:"Bloodline Ending")]
+}
+
+
+
+
+:: Stand {"position":"1500,1200","size":"100,100"}
+(align:"=><=")[<h4>You stand, but the office is deserted. Rows of empty chairs. The monitors still glow, showing distorted versions of yourself sitting at each desk. Every single one turns its head toward you.</h4>]
+
+(align:"=><=")[[Stay frozen, let them surround you->Bloodline Ending]]
+(align:"=><=")[[Run for the exit->Erased Ending]]
 
 
 :: Start Working {"position":"1200,600","size":"100,100"}
@@ -172,4 +247,8 @@ tw-story {
 	font-weight: bold; 
   	font-size: 1.5em;
 	text-shadow: 0 0 5px #2aa198;
+}
+
+.enchantment-clickblock > :not(tw-enchantment)::after {
+	box-shadow: none;
 }
