@@ -39,7 +39,7 @@ I Know A Nephew
 (align:"=><=")[[Start Over->Title]]
 
 
-:: Confront Them {"position":"925,800","size":"100,100"}
+:: Confront Them [confront] {"position":"925,800","size":"100,100"}
 (box:"X")+(text-size:1)[<h4>When you confront the whispering artists, they don’t respond. Their faces turn toward you in unison, expressionless, drained of life. One opens their mouth, but no words come out only the faint sound of keyboard clicking. On the nearest monitor, text starts typing itself….</h4>]
 {
   (set: $typewriterText to "You don’t belong here. Yet you are already part of it.")
@@ -63,7 +63,7 @@ I Know A Nephew
 (align:"=><=")+(box:"X")[[Flee back to your desk and panic->Stay Silent and Keep Working]]
 
 
-:: Defend Yourself {"position":"1450,600","size":"100,100"}
+:: Defend Yourself [hr] {"position":"1450,600","size":"100,100"}
 (align:"=><=")+(box:"X")[<h4>HR calls you in. A missing employee’s desk was reassigned to you. The higher-ups defend you.</h4>]
 
 (align:"=><=")+(text-size:2)+(text-style:"smear", "rumble")+(text-color:red)[“Family comes first.”] 
@@ -101,7 +101,7 @@ I Know A Nephew
 (align:"=><=")[[Start Over->Title]]
 
 
-:: Explore the studio {"position":"1000,600","size":"100,100"}
+:: Explore the studio [explore] {"position":"1000,600","size":"100,100"}
 (align:"=><=")+(box:"X")[<h4>As you walk around, you notice desks emptied but still logged in. Monitors flicker with distorted shots. A group of artists whisper your name, then suddenly stop as you approach. On one screen, you see a render of your own face, twisted, aging decades in seconds.</h4>]
 
 (align:"=><=")[[Confront Them]]
@@ -111,10 +111,11 @@ I Know A Nephew
 :: Ignore It {"position":"1350,925","size":"100,100"}
 (align:"=><=")[<h4>You try to ignore it, forcing yourself to work. But your project folder starts filling with files you didn’t make:</h4>]
 {
-  (set: $typewriterText1 to "self1.mov")
+  (set: $typewriterText1 to "render1.png")
   (set: $typewriterPos1 to 1)
 
   |typewriterOutput1>[]
+  (click: ?typewriterOutput1)[(go-to:"render1"))]
 
   (live: 300ms)[
 
@@ -128,10 +129,11 @@ I Know A Nephew
   ]
 }
 {
-  (set: $typewriterText2 to "self2.mov")
+  (set: $typewriterText2 to "render2.png")
   (set: $typewriterPos2 to 1)
 
   |typewriterOutput2>[]
+  (click: ?typewriterOutput2)[(go-to:"render2"))]
 
   (live: 300ms)[
 
@@ -145,7 +147,7 @@ I Know A Nephew
   ]
 }
 {
-  (set: $typewriterText3 to "self3.mov")
+  (set: $typewriterText3 to "render3.png")
   (set: $typewriterPos3 to 1)
 
   |typewriterOutput3>[]
@@ -156,6 +158,7 @@ I Know A Nephew
     (append: ?typewriterOutput3)+(text-color:red)+(text-size:1.4)+(text-style:"smear", "expand")+(align:"=><=")[(print: $typewriterText3's $typewriterPos3)]
 
     (set: $typewriterPos3 to it + 1)
+    
 
     (if: $typewriterPos3 is $typewriterText3's length + 1)[
       (stop:)
@@ -167,10 +170,10 @@ I Know A Nephew
 (align:"=><=")[[Stand]]
 
 
-:: Look Closer {"position":"950,975","size":"100,100"}
+:: Look Closer [reflection] {"position":"950,975","size":"100,100"}
 (align:"=><=")[<h4>The reflection begins to glitch, pixels tearing away, exposing bone and sinew. In your headphones, static arranges into words…. </h4>]
 
-(transition:"fade")+(transition-delay:1s)+(transition-time: 6s)+(text-style:"smear", "tall", "expand")+(text-size:1.5)+(text-color:red)+(align:"=><=")[“They hired you for your blood. Not your hands.”]<stretch|
+(transition:"fade")+(transition-delay:1s)+(transition-time: 6s)+(text-style:"smear", "tall", "expand")+(text-size:1.5)+(text-color:white)+(align:"=><=")[“They hired you for your blood. Not your hands.”]<stretch|
  (click: ?stretch)[(go-to:"Screen Stretches"))]
 
 (align:"=><=")[<h4>The monitor flickers, your uncle’s face replaces yours.</h4>]
@@ -186,8 +189,6 @@ I Know A Nephew
 
 (live:10s)[(go-to:"Bloodline Ending")]
 }
-
-
 
 
 :: Stand {"position":"1500,1200","size":"100,100"}
@@ -206,7 +207,7 @@ I Know A Nephew
 (align:"=><=")[[Stay Silent and Keep Working]]
 
 
-:: Stay Silent and Keep Working {"position":"1225,775","size":"100,100"}
+:: Stay Silent and Keep Working [silent] {"position":"1225,775","size":"100,100"}
 (align:"=><=")+(box:"X")[Your monitor shows your reflection moving independently of you. When you blink, it doesn't. It whispers:]
 (align:"=><=")+(box:"X")+(text-style:"bold","italic","outline","expand","fade-in-out")+(text-size:2)+(text-color:red)["You were brought here for a reason"]
 
@@ -227,12 +228,74 @@ I Know A Nephew
 (align:"=><=")[[Start->The Beginning]]
 
 
+:: render1 [render1] {"position":"1125,1125","size":"100,100"}
+(animate:  ?passage, "fade")
+(live:5s)[(go-to:"Ignore It")]
+
+
+:: render2 [render2] {"position":"1275,1150","size":"100,100"}
+(live:5s)[(go-to:"Ignore It")]
+
+
 :: StoryStylesheet [stylesheet]
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 
 tw-story {
   font-family: 'Exo', sans-serif;
   font-weight: bold;  
+}
+
+tw-story[tags~="explore"] {
+  background-image:url('./assets/images/explore.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+tw-story[tags~="silent"] {
+  background-image:url('./assets/images/silent.gif');
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-position: center center;
+}
+
+tw-story[tags~="confront"] {
+  text-shadow: 0 0 5px #cb4b16;
+  background-image:url('./assets/images/confront.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+}
+
+tw-story[tags~="reflection"] {
+  text-shadow: 0 0 5px #cb4b16;
+  background-image:url('./assets/images/reflection.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+tw-story[tags~="hr"] {
+  background-image:url('./assets/images/hr.png');
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-position: center center;
+}
+
+tw-story[tags~="render1"] {
+  background-image:url('./assets/images/render1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  transition: opacity 10s ease-in-out;
+}
+
+tw-story[tags~="render2"] {
+  background-image:url('./assets/images/render2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
 }
 
 .enchantment-link, tw-link, a {
